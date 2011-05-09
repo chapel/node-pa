@@ -1,0 +1,13 @@
+{
+    "name": "node-pa",
+    "version": "0.0.1",
+    "description": "Audio file playback using PortAudio and libsndfile for node",
+    "keywords": [],
+    "author": "Jacob Chapel <jacob.chapel@gmail.com>",
+    "main": "lib/nodepa.node",
+    "scripts": {
+      "preinstall": "sh install",
+      "update": "sh compile"
+    },
+    "engines": { "node": "0.4.x" }
+}

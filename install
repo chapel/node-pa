@@ -1,0 +1,44 @@
+#!/bin/sh
+
+if [ ! -e "./deps" ] ; then
+   echo "Making deps directory..."
+   mkdir "deps"
+fi
+cd deps
+
+echo "Downloading libsndfile source"
+`/usr/bin/curl -Lo "libsndfile.tar.gz" "http://www.mega-nerd.com/libsndfile/files/libsndfile-1.0.24.tar.gz"`
+`tar -xvf "libsndfile.tar.gz"`
+rm ./*.tar.gz
+mv libsndfile*/ libsndfile
+   
+cd libsndfile
+echo "Making libsndfile"
+./configure
+make
+echo "Installing libsndfile"
+sudo make install
+cd ..
+
+echo "Downloading portaudio source"
+`/usr/bin/curl -Lo "portaudio.tgz" "http://www.portaudio.com/archives/pa_stable_v19_20110326.tgz"`
+`tar -xvf "portaudio.tgz"`
+rm ./*.tgz
+   
+cd portaudio
+echo "Making portaudio"
+./configure
+make
+echo "Installing portaudio"
+sudo make install
+cd ../..
+
+echo "Building node-pa"
+if [ -e "./build" ] ; then
+   node-waf distclean
+fi
+node-waf configure build
+if [ ! -e "./lib" ] ; then
+   mkdir lib
+fi
+cp ./build/default/nodepa.node ./lib/
