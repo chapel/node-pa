@@ -1,7 +1,5 @@
 This is just an experiment to get real audio working with Node.js 
 
-I have included an install script that should for all intents and purposes download and compile PortAudio and sndfile. Then it will build the module so that you can use it. 
+I have included an install script that should for all intents and purposes download and compile PortAudio and sndfile.
 
-At this point, it is extremely buggy, and doesn't really work as well as it should. I implore that if anyone can, please fork and submit a patch. If need be I would be willing to add contributors if there was interest.
-
-I will still try to get this working fully, but at this point in time, I really don't have the knowledge of C++ to do so. 
+At this point, it is extremely buggy, and doesn't really work as well as it should.
